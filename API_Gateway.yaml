@@ -1,0 +1,24 @@
+openapi: "3.0.1"
+info:
+  title: "hosted-llambda-api"
+  version: "2023-10-24 20:08:14UTC"
+servers:
+- url: "https://o1sg7k98ld.execute-api.eu-west-1.amazonaws.com/{basePath}"
+  variables:
+    basePath:
+      default: "test"
+tags:
+- name: "llama2test"
+paths:
+  /query:
+    post:
+      responses:
+        default:
+          description: "Default response for POST /query"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "2.0"
+        type: "aws_proxy"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:007193307513:function:llambda-python-connection/invocations"
+        connectionType: "INTERNET"
+x-amazon-apigateway-importexport-version: "1.0"
